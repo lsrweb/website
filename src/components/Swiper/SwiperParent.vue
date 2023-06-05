@@ -6,6 +6,9 @@
     :direction="'vertical'"
     :mousewheel="true"
     :modules="modules"
+    :hashNavigation="true"
+    :initialSlide="0"
+    :speed="1000"
   >
     <swiper-slide>
       <img
