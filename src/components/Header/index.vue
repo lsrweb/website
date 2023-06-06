@@ -1,266 +1,271 @@
-<script setup>
-import { ref } from 'vue'
-
-const navData = ref([
-  {
-    title: '首页',
-    path: 'index',
-    id: 1
-  },
-  {
-    title: '关于朗廷',
-    path: 'index',
-    id: 2,
-    children: [
-      {
-        title: '集团概况',
-        path: 'index',
-        id: 21
-      },
-      {
-        title: '社会责任',
-        path: 'index',
-        id: 22
-      },
-      {
-        title: '发展历程',
-        path: 'index',
-        id: 23
-      },
-      {
-        title: '联系我们',
-        path: 'index',
-        id: 24
-      }
-    ]
-  },
-  {
-    title: '产业布局',
-    path: 'index',
-    id: 3
-  },
-  {
-    title: '产业案例',
-    path: 'index',
-    id: 4
-  },
-  {
-    title: '新闻中心',
-    path: 'index',
-    id: 5
-  },
-  {
-    title: '人才战略',
-    path: 'index',
-    id: 6
-  }
-])
-
-const navToggle = ref(false)
-</script>
-
 <template>
-  <div class="header-top-fixed">
-    <div class="center-container">
-      <div class="left_">
-        <a href="">
-          <img src="http://www.lontend.com/assets/index/image/logo.png" alt="" />
-        </a>
-      </div>
-      <div class="right_">
-        <div class="r_left_">
-          <ul v-show="!navToggle">
-            <!--            <li>-->
-            <!--              <router-link to="index">首页</router-link>-->
-            <!--            </li>-->
-            <!--            <li>-->
-            <!--              <router-link to="index">关于朗廷</router-link>-->
-            <!--              <div class="submenu">-->
-            <!--                <router-link to="to">集团概况</router-link>-->
-            <!--                <router-link to="to">社会责任</router-link>-->
-            <!--                <router-link to="to">发展历程</router-link>-->
-            <!--                <router-link to="to">联系我们</router-link>-->
-            <!--              </div>-->
-            <!--            </li>-->
-            <!--            <li>-->
-            <!--              <router-link to="index">产业布局</router-link>-->
-            <!--            </li>-->
-            <!--            <li>-->
-            <!--              <router-link to="index">产业案例</router-link>-->
-            <!--            </li>-->
-            <!--            <li>-->
-            <!--              <router-link to="index">新闻中心</router-link>-->
-            <!--            </li>-->
-            <!--            <li>-->
-            <!--              <router-link to="index">人才战略</router-link>-->
-            <!--            </li>-->
-            <li v-for="item in navData" :key="item.id">
-              <router-link :to="item.path">{{ item.title }}</router-link>
-              <template v-if="item.children && item.children.length > 0">
-                <div class="submenu">
-                  <router-link v-for="child in item.children" :key="child.id" :to="child.path">
-                    {{ child.title }}
-                  </router-link>
-                </div>
-              </template>
-            </li>
+  <div class="fixed-header">
+    <div class="container">
+      <a href="">
+        <img src="http://www.lontend.com/assets/index/image/logo.png" alt="" class="pc-logo" />
+      </a>
+      <a href="">
+        <img src="http://www.lontend.com/assets/index/image/mobile_logo.png" alt="" class="pe-logo" />
+      </a>
+      <a href="">
+        <img src="http://www.lontend.com/assets/index/image/mobile_logo.png" alt="" class="pe-logo" />
+      </a>
+      <ul class="navigation" style="">
+        <li>
+          <router-link to="/">首页</router-link>
+        </li>
+        <li>
+          <router-link to="/about">关于朗庭</router-link>
+          <ul class="submenu">
+            <li><router-link to="/summary">集团概况</router-link></li>
+            <li><router-link to="/duty">社会责任</router-link></li>
+            <li><router-link to="/deve">发展历程</router-link></li>
+            <li><router-link to="/contact">联系我们</router-link></li>
           </ul>
+        </li>
+        <li>
+          <router-link to="/layoutHome">产业布局</router-link>
+        </li>
+        <li>
+          <router-link to="/case_recom">产业案例</router-link>
+        </li>
+        <li>
+          <router-link to="/news">新闻中心</router-link>
+        </li>
+        <li>
+          <router-link to="/talent">人才战略</router-link>
+        </li>
+      </ul>
+      <div class="toggle-show">
+        <div class="search-box">
+          <div class="pc">
+            <img
+              src="http://www.lontend.com/assets/index/image/search.png"
+              alt=""
+              v-show="!searchToggle"
+              @click="searchToggle = !searchToggle"
+            />
+            <img
+              src="http://www.lontend.com/assets/index/image/close-icon.png"
+              alt=""
+              v-show="searchToggle"
+              @click="searchToggle = !searchToggle"
+            />
+          </div>
+          <div class="pe">
+            <img
+              src="http://www.lontend.com/assets/index/image/seach.png"
+              alt=""
+              v-show="!searchToggle"
+              @click="searchToggle = !searchToggle"
+            />
+            <img
+              src="http://www.lontend.com/assets/index/image/gb.png"
+              alt=""
+              v-show="searchToggle"
+              @click="searchToggle = !searchToggle"
+            />
+          </div>
         </div>
-        <div class="r_right_">
-          <div class="search">
-            <img src="http://www.lontend.com/assets/index/image/search.png" alt="" />
-          </div>
-          <div class="close-toggle" @click="navToggle = !navToggle">
-            <img
-              src="http://www.lontend.com/assets/index/image/close.png"
-              alt=""
-              class="close"
-              v-show="!navToggle"
-            />
-            <img
-              src="http://www.lontend.com/assets/index/image/menu.png"
-              alt=""
-              class="open"
-              v-show="navToggle"
-            />
-          </div>
+        <div class="toggle-box">
+          <img
+            src="http://www.lontend.com/assets/index/image/menu.png"
+            alt=""
+            v-show="!menuToggle"
+            @click="menuToggle = !menuToggle"
+          />
+          <img
+            src="http://www.lontend.com/assets/index/image/close.png"
+            alt=""
+            v-show="menuToggle"
+            @click="menuToggle = !menuToggle"
+          />
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
-.header-top-fixed {
+<script>
+import { onMounted, ref } from 'vue'
+
+export default {
+  setup() {
+    const searchToggle = ref(false)
+    const menuToggle = ref(false)
+
+    onMounted(() => {
+      function setBaseFontSize() {
+        let clientWidth = document.documentElement.clientWidth
+        if (clientWidth < 1200) {
+          clientWidth = 1200
+        } else if (clientWidth > 1920) {
+          clientWidth = 1920
+        }
+        if (document.body.clientWidth < 900) {
+          document.querySelector('.investCase .swiper').style.height = '370px'
+        }
+        document.documentElement.style.fontSize = (clientWidth / 1920) * 100 + 'px'
+      }
+      setBaseFontSize()
+      window.addEventListener('resize', setBaseFontSize)
+    })
+
+    return {
+      searchToggle,
+      menuToggle
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.fixed-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-
+  height: 50px;
   z-index: 10;
 
-  .center-container {
-    width: 85%;
-    margin: 0 auto;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 20px;
+  .fixed-header.transparent {
+    background: transparent;
+  }
 
-    > .left_ {
+  .container {
+    width: 85%;
+    height: 100%;
+    margin: 0 auto;
+    > a {
+      display: inline-block;
+      height: 100%;
+      float: left;
       img {
-        width: 2.08rem;
-        height: 0.36rem;
-        display: block;
-        object-fit: contain;
+        height: 100%;
       }
     }
-
-    > .right_ {
+    img.pe-logo {
+      display: none;
+    }
+    img.pc-logo {
+      width: 2.2rem;
+      height: 1.1rem;
+    }
+    ul.navigation {
+      width: 76%;
+      position: relative;
+      list-style: none;
+      float: left;
+      margin-top: 10px;
       display: flex;
-      width: 42%;
-      justify-content: space-between;
+      justify-content: flex-end;
 
-      .r_left_ {
-        width: 90%;
-
-        ul {
-          height: 100%;
-          max-width: 70%;
-          justify-content: space-between;
+      > li {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        float: left;
+        line-height: 20px;
+        position: relative;
+        padding: 18px 22px;
+        a {
+          padding-bottom: 8px;
+          font-size: 16px;
+          color: #fff;
+          text-decoration: none;
+          display: block;
         }
-
-        li {
-          height: 50px;
-          line-height: 50px;
-          position: relative;
-          border-bottom: 2px solid transparent;
-
-          &:after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 0;
-            width: 100%;
-            height: 20px;
-            background-color: transparent;
-          }
-
-          &:hover {
-            border-color: #fff;
-
-            div.submenu {
-              display: flex;
-            }
-          }
-
-          div.submenu {
-            position: absolute;
-            top: 60px;
-            left: 0;
-            width: max-content;
-            background-color: rgba(255, 255, 255, 0.7);
-            padding: 12px 32px;
-            display: none;
-            border-radius: 8px;
-
+        ul.submenu {
+          position: absolute;
+          top: 60px;
+          left: 0;
+          width: 100%;
+          background: #fff;
+          display: none;
+          border-radius: 6px;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          z-index: 99;
+          li {
+            display: inline-block;
+            margin: 0;
+            float: left;
+            line-height: 20px;
+            position: relative;
+            padding: 18px 22px;
             a {
-              color: rgb(102, 102, 102);
+              padding: 10px 20px;
               font-size: 14px;
-              margin-right: 50px;
-
-              &:last-child {
-                margin-right: 0;
-              }
+              color: #333;
+              text-decoration: none;
+              display: block;
+              padding: 14px 20px;
+              width: 100%;
+              color: #666;
+              font-size: 14px;
+              text-decoration: none;
+              display: inline-block;
+              float: left;
+              clear: both;
+              white-space: nowrap;
+              box-sizing: border-box;
+              -moz-box-sizing: border-box;
+              -webkit-box-sizing: border-box;
             }
           }
-
+        }
+        &:hover {
           a {
-            font-size: 16px;
-            display: block;
-            height: 100%;
+            border-bottom: 2px solid #fff;
+          }
+          ul.submenu {
+            display: flex;
+            width: max-content;
           }
         }
       }
-
-      .r_right_ {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+    }
+    .toggle-show {
+      width: 90px;
+      float: right;
+      margin-top: 22px;
+      overflow: hidden;
+      img {
+        width: 32px;
+      }
+      * {
+        font-size: initial;
+      }
+      .search-box {
+        width: 20px;
+        float: left;
+        font-size: 0;
+        margin-top: 8px;
 
         img {
-          display: inline-block;
-          width: 32px;
-          height: 32px;
+          width: 22px;
+          margin-right: 10px;
         }
-
-        .close-toggle {
-          display: flex;
-          align-items: center;
+        .pe {
+          display: none;
         }
-        //
-        //img.open {
-        //  display: none;
-        //}
-
-        .search {
-          display: flex;
-          align-items: center;
-
-          img {
-            width: 20px;
-            height: 20px;
+        @media screen and (max-width: 1200px) {
+          .pe {
+            display: block;
           }
+          .pc {
+            display: none;
+          }
+        }
+      }
+      .toggle-box {
+        float: right;
+        img {
+          width: 32px;
         }
       }
     }
   }
-}
-
-.r_left_ ul {
-  display: flex;
-  align-items: center;
 }
 </style>

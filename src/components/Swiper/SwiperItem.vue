@@ -1,23 +1,47 @@
-<script setup>
-import { defineAsyncComponent } from 'vue'
-const props = defineProps(['imgSrc', 'swiperRef'])
-console.log(props.swiperRef)
-</script>
-<script>
-import { SwiperSlide } from 'swiper/vue'
-
-export default {
-  components: {
-    SwiperSlide
-  }
-}
-</script>
-
-<template>
+<!-- <template>
   <SwiperSlide :swiper-ref="swiperRef">
     <img :src="imgSrc" alt="" class="img-full" />
   </SwiperSlide>
-</template>
+</template> -->
+
+<script>
+import { SwiperSlide } from 'swiper/vue'
+import { render } from 'vue'
+import { h } from 'vue'
+import { defineAsyncComponent } from 'vue'
+
+export default defineAsyncComponent({
+  components: {
+    SwiperSlide
+  },
+  props: {
+    imgSrc: {
+      type: String,
+      default: ''
+    },
+    swiperRef: {
+      type: Object,
+      default: null
+    }
+  },
+  setup(props) {
+    const vNodes = render(
+      'SwiperSlide',
+      {
+        ref: 'swiperRef'
+      },
+      [
+        h('img', {
+          src: props.imgSrc,
+          alt: '',
+          class: 'img-full'
+        })
+      ]
+    )
+    return () => vNodes
+  }
+})
+</script>
 
 <style scoped lang="scss">
 .img-full {
