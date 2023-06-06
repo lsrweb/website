@@ -11,29 +11,13 @@
         <img src="http://www.lontend.com/assets/index/image/mobile_logo.png" alt="" class="pe-logo" />
       </a>
       <ul class="navigation" style="">
-        <li>
-          <router-link to="/">首页</router-link>
-        </li>
-        <li>
-          <router-link to="/about">关于朗庭</router-link>
-          <ul class="submenu">
-            <li><router-link to="/summary">集团概况</router-link></li>
-            <li><router-link to="/duty">社会责任</router-link></li>
-            <li><router-link to="/deve">发展历程</router-link></li>
-            <li><router-link to="/contact">联系我们</router-link></li>
+        <li v-for="(item, index) in navData" :key="index">
+          <router-link :to="item.path">{{ item.name }}</router-link>
+          <ul class="submenu" v-if="item.children && item.children.length > 0">
+            <li v-for="(child, index) in item.children" :key="index">
+              <router-link :to="child.path">{{ child.name }}</router-link>
+            </li>
           </ul>
-        </li>
-        <li>
-          <router-link to="/layoutHome">产业布局</router-link>
-        </li>
-        <li>
-          <router-link to="/case_recom">产业案例</router-link>
-        </li>
-        <li>
-          <router-link to="/news">新闻中心</router-link>
-        </li>
-        <li>
-          <router-link to="/talent">人才战略</router-link>
         </li>
       </ul>
       <div class="toggle-show">
@@ -94,6 +78,51 @@ export default {
     const searchToggle = ref(false)
     const menuToggle = ref(false)
 
+    const navData = [
+      {
+        name: '首页',
+        path: '/'
+      },
+      {
+        name: '关于朗庭',
+        path: '/about',
+        children: [
+          {
+            name: '集团概况',
+            path: '/summary'
+          },
+          {
+            name: '社会责任',
+            path: '/duty'
+          },
+          {
+            name: '发展历程',
+            path: '/deve'
+          },
+          {
+            name: '联系我们',
+            path: '/contact'
+          }
+        ]
+      },
+      {
+        name: '产业布局',
+        path: '/layoutHome'
+      },
+      {
+        name: '产业案例',
+        path: '/case_recom'
+      },
+      {
+        name: '新闻中心',
+        path: '/news'
+      },
+      {
+        name: '人才战略',
+        path: '/talent'
+      }
+    ]
+
     onMounted(() => {
       function setBaseFontSize() {
         let clientWidth = document.documentElement.clientWidth
@@ -113,7 +142,8 @@ export default {
 
     return {
       searchToggle,
-      menuToggle
+      menuToggle,
+      navData
     }
   }
 }
