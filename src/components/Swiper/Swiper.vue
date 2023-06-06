@@ -1,26 +1,24 @@
 <template>
-  <div>
-    <Swiper
-      :slides-per-view="1"
-      :direction="'vertical'"
-      :mousewheel="true"
-      :modules="modules"
-      :hashNavigation="true"
-      :initialSlide="0"
-      :speed="1000"
-      ref="mySwiper"
-    >
-      <SwiperSlide v-for="(item, index) in swiperList" :key="index">
-        <img :src="item.imgSrc" alt="" class="img-full" />
-      </SwiperSlide>
-    </Swiper>
-  </div>
+  <Swiper
+    :slides-per-view="1"
+    :direction="'vertical'"
+    :mousewheel="true"
+    :modules="modules"
+    :hashNavigation="true"
+    :initialSlide="0"
+    :speed="1000"
+    ref="mySwiper"
+  >
+    <!--      <SwiperSlide v-for="(item, index) in swiperList" :key="index">-->
+    <!--        <img :src="item.imgSrc" alt="" class="img-full" />-->
+    <!--      </SwiperSlide>-->
+    <slot name="swiper-slide"></slot>
+  </Swiper>
 </template>
 <script>
 import { nextTick, ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Mousewheel } from 'swiper'
-import 'swiper/css'
 
 export default {
   name: 'SwiperIndex',

@@ -1,3 +1,5 @@
+@import 'swiper/css';
+
 * {
   margin: 0;
   padding: 0;
@@ -14,6 +16,7 @@ input {
 }
 html {
   font-size: 100px;
+  min-height: 400px;
 }
 input,
 button,
@@ -53,4 +56,82 @@ button {
   border: none;
   outline: none;
   background-color: transparent;
+}
+
+// common class
+.container {
+    width: 85%;
+    margin: 0 auto;
+}
+
+
+// utils class
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.relative-x-center {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.relative-y-center {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.absolute-x-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.absolute-y-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.flex {
+  display: flex;
+}
+.none {
+  display: none;
+}
+.justify-center {
+  justify-content: center;
+}
+.align-center {
+  align-items: center;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rotate-90 {
+  transform: rotate(90deg);
+}
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.text-white {
+  color: #fff;
+}
+@for $i from 1 through 50 {
+  .z-#{$i} {
+    z-index: $i;
+  }
 }
