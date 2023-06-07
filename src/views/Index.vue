@@ -5,7 +5,7 @@
         <page1 @init="initPage01" />
       </swiper-slide>
       <swiper-slide>
-        <page2 @init="initPage02"></page2>
+        <page2 @init="initPage02" ref="page02Init"></page2>
       </swiper-slide>
       <swiper-slide>
         <img
@@ -18,6 +18,8 @@
   </swiperParent>
 </template>
 <script setup>
+import { ref, getCurrentInstance } from 'vue'
+
 import { SwiperSlide } from 'swiper/vue'
 
 import swiperParent from '@/components/Swiper/Swiper.vue'
@@ -27,6 +29,8 @@ import page2 from './Index/Page2/index.vue'
 const initPage01 = (swiper) => {
   console.log('%c第一屏加载完成', 'color: green; font-size: 14px;', swiper)
 }
+
+const page02Init = ref(null)
 const initPage02 = (swiper) => {
   console.log('%c第二屏加载完成', 'color: green; font-size: 14px;', swiper)
 }

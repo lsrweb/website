@@ -13,6 +13,7 @@ module.exports = {
   },
   rules: {
     // https://eslint.vuejs.org/rules/multi-word-component-names
-    'vue/multi-word-component-names': 'off'
+    'vue/multi-word-component-names': 'off',
+    'vue/valid-v-for': 'off',
   }
 }

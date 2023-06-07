@@ -105,6 +105,15 @@ button {
 .flex {
   display: flex;
 }
+.block {
+  display: block !important;
+}
+.inline-block {
+  display: inline-block;
+}
+.inline {
+  display: inline !important;
+}
 .none {
   display: none;
 }
