@@ -5,11 +5,7 @@
         <page1 @init="initPage01" />
       </swiper-slide>
       <swiper-slide>
-        <img
-          src="http://www.lontend.com/uploads/20230224/a49194f01379d2516675467c050efde3.jpg"
-          alt=""
-          class="img-full"
-        />
+        <page2 @init="initPage02"></page2>
       </swiper-slide>
       <swiper-slide>
         <img
@@ -26,8 +22,12 @@ import { SwiperSlide } from 'swiper/vue'
 
 import swiperParent from '@/components/Swiper/Swiper.vue'
 import page1 from './Index/Page1/index.vue'
+import page2 from './Index/Page2/index.vue'
 
 const initPage01 = (swiper) => {
   console.log('%c第一屏加载完成', 'color: green; font-size: 14px;', swiper)
+}
+const initPage02 = (swiper) => {
+  console.log('%c第二屏加载完成', 'color: green; font-size: 14px;', swiper)
 }
 </script>

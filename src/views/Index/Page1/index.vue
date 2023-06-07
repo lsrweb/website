@@ -17,11 +17,10 @@ const init = (swiper) => {
   // init nextTick
   nextTick(() => {
     swiper.autoplay.stop() // stop autoplay
-    console.log(swiper)
     const initOneClientWidthArrEl = swiper.slides[0].querySelectorAll('.title_ p')
-    // set text animation
+    // // set text animation
     initOneClientWidthArrEl.forEach((el) => {
-      const clientWidth = el.clientWidth
+      const clientWidth = el.clientWidth // get element client width
       el.style.visibility = 'visible'
       el.style.width = 0
       // width from 0 to clientWidth

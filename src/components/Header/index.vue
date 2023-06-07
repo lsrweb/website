@@ -10,7 +10,7 @@
       <a href="">
         <img src="http://www.lontend.com/assets/index/image/mobile_logo.png" alt="" class="pe-logo" />
       </a>
-      <ul class="navigation" style="">
+      <ul class="navigation" v-show="!menuToggle">
         <li v-for="(item, index) in navData" :key="index">
           <router-link :to="item.path">{{ item.name }}</router-link>
           <ul class="submenu" v-if="item.children && item.children.length > 0">
@@ -130,9 +130,6 @@ export default {
           clientWidth = 1200
         } else if (clientWidth > 1920) {
           clientWidth = 1920
-        }
-        if (document.body.clientWidth < 900) {
-          document.querySelector('.investCase .swiper').style.height = '370px'
         }
         document.documentElement.style.fontSize = (clientWidth / 1920) * 100 + 'px'
       }
