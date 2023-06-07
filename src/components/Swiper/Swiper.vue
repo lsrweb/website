@@ -9,29 +9,21 @@
     :speed="1000"
     ref="mySwiper"
   >
-    <!--      <SwiperSlide v-for="(item, index) in swiperList" :key="index">-->
-    <!--        <img :src="item.imgSrc" alt="" class="img-full" />-->
-    <!--      </SwiperSlide>-->
     <slot name="swiper-slide"></slot>
   </Swiper>
 </template>
 <script>
-import { nextTick, ref } from 'vue'
-import { Swiper, SwiperSlide } from 'swiper/vue'
+import { ref } from 'vue'
+import { Swiper } from 'swiper/vue'
 import { Mousewheel } from 'swiper'
 
 export default {
   name: 'SwiperIndex',
   components: {
-    Swiper,
-    SwiperSlide
+    Swiper
   },
   setup() {
     const mySwiper = ref(null)
-    // const swiperRef = ref(null)
-    nextTick(() => {
-      // swiperRef.value = mySwiper.value.$el.swiper.slideTo(2, 1000, false)
-    })
 
     const swiperList = [
       {
