@@ -1,45 +1,60 @@
-<script setup>
+<script>
 import { SwiperSlide, Swiper } from 'swiper/vue'
-import { getCurrentInstance, nextTick, ref } from 'vue'
+import { defineComponent, getCurrentInstance, nextTick, ref, defineEmits } from 'vue'
 import { Autoplay, Navigation } from 'swiper'
 
-defineEmits(['init'])
+export default defineComponent({
+  components: {
+    Swiper,
+    SwiperSlide
+  },
+  setup() {
+    defineEmits(['init'])
 
-// 拦截 swiper 实例
-const swiperRef = ref(null)
-const { proxy } = getCurrentInstance()
+    // 拦截 swiper 实例
+    const swiperRef = ref(null)
+    const { proxy } = getCurrentInstance()
 
-// event handler
-const transitionEnd = (swiper) => {}
-const init = (swiper) => {
-  // throw swiper instance to parent component
-  proxy.$emit('init', swiper)
-  // init nextTick
-  nextTick(() => {
-    swiper.autoplay.stop() // stop autoplay
-    const initOneClientWidthArrEl = swiper.slides[0].querySelectorAll('.title_ p')
-    // // set text animation
-    initOneClientWidthArrEl.forEach((el) => {
-      const clientWidth = el.clientWidth // get element client width
-      el.style.visibility = 'visible'
-      el.style.width = 0
-      // width from 0 to clientWidth
-      function textAnimate(callback) {
-        const timer = setInterval(() => {
-          if (el.clientWidth < clientWidth) {
-            el.style.width = el.clientWidth + 1 + 'px'
-          } else {
-            clearInterval(timer)
-            callback()
+    // event handler
+    const transitionEnd = (swiper) => {}
+    const init = (swiper) => {
+      // throw swiper instance to parent component
+      proxy.$emit('init', swiper)
+      // init nextTick
+      nextTick(() => {
+        swiper.autoplay.stop() // stop autoplay
+        const initOneClientWidthArrEl = swiper.slides[0].querySelectorAll('.title_ p')
+        // // set text animation
+        initOneClientWidthArrEl.forEach((el) => {
+          const clientWidth = el.clientWidth // get element client width
+          el.style.visibility = 'visible'
+          el.style.width = 0
+          // width from 0 to clientWidth
+          function textAnimate(callback) {
+            const timer = setInterval(() => {
+              if (el.clientWidth < clientWidth) {
+                el.style.width = el.clientWidth + 1 + 'px'
+              } else {
+                clearInterval(timer)
+                callback()
+              }
+            }, 10)
           }
-        }, 10)
-      }
-      textAnimate(function () {
-        swiper.autoplay.start()
+          textAnimate(function () {
+            swiper.autoplay.start()
+          })
+        })
       })
-    })
-  })
-}
+    }
+    return {
+      swiperRef,
+      transitionEnd,
+      init,
+      Autoplay,
+      Navigation
+    }
+  }
+})
 </script>
 
 <template>
