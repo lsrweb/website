@@ -15,7 +15,7 @@
       @transition-end="transitionEnd"
       class="page02-swiper"
     >
-      <SwiperSlide class="relative" v-for="(item, index) in swiperData" :key="uuid()">
+      <SwiperSlide class="relative" v-for="item in swiperData" :key="uuid()">
         <img :src="item.image" alt="" class="img-full relative z-10" />
         <div :class="['pos-info absolute absolute-y-center']">
           <div class="type-title">
@@ -66,7 +66,7 @@
 
 <script>
 import { SwiperSlide, Swiper } from 'swiper/vue'
-import { getCurrentInstance, nextTick, ref, defineComponent, defineEmits } from 'vue'
+import { getCurrentInstance, nextTick, defineComponent, defineEmits, ref } from 'vue'
 import { Autoplay } from 'swiper'
 import { datas } from './data'
 

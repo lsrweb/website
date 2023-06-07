@@ -5,7 +5,7 @@
     :mousewheel="true"
     :modules="modules"
     :hashNavigation="true"
-    :initialSlide="1"
+    :initialSlide="2"
     :speed="1000"
     ref="mySwiper"
   >

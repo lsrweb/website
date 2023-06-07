@@ -8,23 +8,20 @@
         <page2 @init="initPage02" ref="page02Init"></page2>
       </swiper-slide>
       <swiper-slide>
-        <img
-          src="http://www.lontend.com/uploads/20230224/2050d9a9dcd66ed6bc8ab403a3bfbdce.jpg"
-          alt=""
-          class="img-full"
-        />
+        <page3 @init="initPage03" ref="page03Init"></page3>
       </swiper-slide>
     </template>
   </swiperParent>
 </template>
 <script setup>
-import { ref, getCurrentInstance } from 'vue'
+import { ref } from 'vue'
 
 import { SwiperSlide } from 'swiper/vue'
 
 import swiperParent from '@/components/Swiper/Swiper.vue'
 import page1 from './Index/Page1/index.vue'
 import page2 from './Index/Page2/index.vue'
+import page3 from './Index/Page3/index.vue'
 
 const initPage01 = (swiper) => {
   console.log('%c第一屏加载完成', 'color: green; font-size: 14px;', swiper)
@@ -33,5 +30,10 @@ const initPage01 = (swiper) => {
 const page02Init = ref(null)
 const initPage02 = (swiper) => {
   console.log('%c第二屏加载完成', 'color: green; font-size: 14px;', swiper)
+}
+
+const page03Init = ref(null)
+const initPage03 = (swiper) => {
+  console.log('%c第三屏加载完成', 'color: green; font-size: 14px;', swiper)
 }
 </script>

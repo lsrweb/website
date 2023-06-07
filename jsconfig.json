@@ -1,18 +1,11 @@
 {
+  "allowJs": true,
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    },
-    "target": "esnext"
+      "@/*": ["./src/*"]
+    }
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "src/**/*"
-  ],
-  "allowJs": true
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
