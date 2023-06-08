@@ -34,13 +34,15 @@ export default {
       const total = props.total
       const current = props.current
 
-      ctx.beginPath()
-      ctx.lineWidth = 1
-      ctx.strokeStyle = '#ccc'
-      ctx.arc(25, 25, 20, 0, 2 * Math.PI)
-      ctx.stroke()
+      function drawOutLine() {
+        ctx.beginPath()
+        ctx.lineWidth = 1
+        ctx.strokeStyle = '#ccc'
+        ctx.arc(25, 25, 20, 0, 2 * Math.PI)
+        ctx.stroke()
+      }
+      drawOutLine()
 
-      ctx.beginPath()
       ctx.font = '14px '
       ctx.fillStyle = '#ccc'
 
@@ -48,13 +50,22 @@ export default {
       ctx.textBaseline = 'middle'
 
       ctx.fillStyle = '#a0141a'
-      ctx.fillText(current, 15, 25)
+      ctx.fillText(current <= 0 ? 1 : current + 1, 15, 25)
 
       ctx.fillStyle = '#ccc'
       ctx.fillText('/', 25, 25)
 
       ctx.font = '16px Arial'
       ctx.fillText(total, 35, 25)
+
+      function updateCtxArc() {
+        ctx.beginPath()
+        ctx.lineWidth = 1
+        ctx.strokeStyle = '#fff'
+        ctx.arc(25, 25, 20, 1.5 * Math.PI, (1.5 + ((current <= 0 ? 1 : current + 1) / total) * 2) * Math.PI)
+        ctx.stroke()
+      }
+      updateCtxArc()
     }
 
     const updateNumber = () => {
