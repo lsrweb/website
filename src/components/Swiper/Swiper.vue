@@ -10,7 +10,7 @@
         watchState: true,
         replaceState: true
       }"
-      :allow-touch-move="false"
+      :nested="true"
       :createElements="true"
       :el="'.main-swipe-page'"
       :initialSlide="2"
