@@ -6,7 +6,7 @@
         delay: 1115000,
         disableOnInteraction: false
       }"
-      :allow-touch-move="false"
+      :nested="true"
       :modules="[Autoplay]"
       :loop="false"
       :initial-slide="0"

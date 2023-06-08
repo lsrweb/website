@@ -16,6 +16,7 @@ export default defineComponent({
     const { proxy } = getCurrentInstance()
 
     // event handler
+    // eslint-disable-next-line no-unused-vars
     const transitionEnd = (swiper) => {}
     const init = (swiper) => {
       // throw swiper instance to parent component
@@ -66,6 +67,7 @@ export default defineComponent({
         delay: 5000,
         disableOnInteraction: false
       }"
+      :nested="true"
       :allow-touch-move="false"
       :modules="[Autoplay, Navigation]"
       :navigation="{

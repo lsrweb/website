@@ -26,7 +26,9 @@ export default defineComponent({
       arrowImage.value.display = 'block'
       arrowImage.value.top = '0.2rem'
     }
+    // eslint-disable-next-line no-unused-vars
     const transitionEnd = (swiper) => {}
+    // eslint-disable-next-line no-unused-vars
     const transitionStart = (swiper) => {
       setAnimate()
     }
@@ -93,6 +95,7 @@ export default defineComponent({
       @transition-end="transitionEnd"
       @transition-start="transitionStart"
       class="page03-swiper"
+      :nested="true"
     >
       <SwiperSlide v-for="(item, index) in data" :key="index">
         <img :src="item.image" alt="" />

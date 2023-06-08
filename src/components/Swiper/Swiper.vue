@@ -1,28 +1,37 @@
 <template>
-  <Swiper
-    :slides-per-view="1"
-    :direction="'vertical'"
-    :mousewheel="true"
-    :modules="modules"
-    :hashNavigation="true"
-    :initialSlide="2"
-    :speed="1000"
-    ref="mySwiper"
-  >
-    <slot name="swiper-slide"></slot>
-  </Swiper>
+  <div class="main-swiper-page">
+    <Swiper
+      :slides-per-view="1"
+      :direction="'vertical'"
+      :mousewheel="true"
+      :modules="modules"
+      :hashNavigation="{
+        enabled: true,
+        watchState: true,
+        replaceState: true
+      }"
+      :allow-touch-move="false"
+      :createElements="true"
+      :el="'.main-swipe-page'"
+      :initialSlide="2"
+      :speed="1000"
+      ref="mySwiper"
+      @init="initMainSwiper"
+    >
+      <slot></slot>
+    </Swiper>
+  </div>
 </template>
 <script>
-import { ref } from 'vue'
+import { nextTick, ref } from 'vue'
 import { Swiper } from 'swiper/vue'
-import { Mousewheel } from 'swiper'
+import { Mousewheel, HashNavigation } from 'swiper'
 
 export default {
-  name: 'SwiperIndex',
   components: {
     Swiper
   },
-  setup() {
+  setup(props, { emit }) {
     const mySwiper = ref(null)
 
     const swiperList = [
@@ -37,11 +46,18 @@ export default {
       }
     ]
 
+    const initMainSwiper = (swiper) => {
+      nextTick(() => {
+        emit('init', swiper)
+      })
+    }
+
     return {
       mySwiper,
-      modules: [Mousewheel],
+      modules: [Mousewheel, HashNavigation],
 
-      swiperList
+      swiperList,
+      initMainSwiper
     }
   }
 }
