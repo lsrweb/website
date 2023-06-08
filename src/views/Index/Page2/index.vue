@@ -3,7 +3,7 @@
     <Swiper
       :speed="1500"
       :autoplay="{
-        delay: 1115000,
+        delay: 5000,
         disableOnInteraction: false
       }"
       :nested="true"
@@ -15,7 +15,7 @@
       @transition-end="transitionEnd"
       class="page02-swiper"
     >
-      <SwiperSlide class="relative" v-for="item in swiperData" :key="uuid()">
+      <SwiperSlide class="relative" v-for="item in swiperData" :key="item.image">
         <img :src="item.image" alt="" class="img-full relative z-10" />
         <div :class="['pos-info absolute absolute-y-center']">
           <div class="type-title">

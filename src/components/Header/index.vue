@@ -85,41 +85,41 @@ export default {
       },
       {
         name: '关于朗庭',
-        path: '/about',
+        path: '/',
         children: [
           {
             name: '集团概况',
-            path: '/summary'
+            path: '/'
           },
           {
             name: '社会责任',
-            path: '/duty'
+            path: '/'
           },
           {
             name: '发展历程',
-            path: '/deve'
+            path: '/'
           },
           {
             name: '联系我们',
-            path: '/contact'
+            path: '/'
           }
         ]
       },
       {
         name: '产业布局',
-        path: '/layoutHome'
+        path: '/'
       },
       {
         name: '产业案例',
-        path: '/case_recom'
+        path: '/'
       },
       {
         name: '新闻中心',
-        path: '/news'
+        path: '/'
       },
       {
         name: '人才战略',
-        path: '/talent'
+        path: '/'
       }
     ]
 

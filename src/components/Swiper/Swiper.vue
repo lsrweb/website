@@ -5,18 +5,12 @@
       :direction="'vertical'"
       :mousewheel="true"
       :modules="modules"
-      :hashNavigation="{
-        enabled: true,
-        watchState: true,
-        replaceState: true
-      }"
       :nested="true"
-      :createElements="true"
-      :el="'.main-swipe-page'"
-      :initialSlide="2"
+      :initialSlide="0"
       :speed="1000"
       ref="mySwiper"
       @init="initMainSwiper"
+      @slideChange="slideChange"
     >
       <slot></slot>
     </Swiper>
@@ -52,12 +46,17 @@ export default {
       })
     }
 
+    const slideChange = (swiper) => {
+      emit('slideChange', swiper)
+    }
+
     return {
       mySwiper,
       modules: [Mousewheel, HashNavigation],
 
       swiperList,
-      initMainSwiper
+      initMainSwiper,
+      slideChange
     }
   }
 }
