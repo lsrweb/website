@@ -46,16 +46,19 @@ onMounted(() => {
   })
 })
 
+// eslint-disable-next-line no-unused-vars
 const initPage01 = (swiper) => {
   console.log('%c第一屏加载完成', 'color: green; font-size: 12px;')
 }
 
 const page02Init = ref(null)
+// eslint-disable-next-line no-unused-vars
 const initPage02 = (swiper) => {
   console.log('%c第二屏加载完成', 'color: green; font-size: 12px;')
 }
 
 const page03Init = ref(null)
+// eslint-disable-next-line no-unused-vars
 const initPage03 = (swiper) => {
   console.log('%c第三屏加载完成', 'color: green; font-size: 12px;')
 }

@@ -13,6 +13,9 @@
       @slideChange="slideChange"
     >
       <slot></slot>
+      <template v-slot:container-end>
+        <LBCircleCount :total="6" :current="current" />
+      </template>
     </Swiper>
   </div>
 </template>
@@ -20,10 +23,12 @@
 import { nextTick, ref } from 'vue'
 import { Swiper } from 'swiper/vue'
 import { Mousewheel, HashNavigation } from 'swiper'
+import LBCircleCount from '../LBCircleCount.vue'
 
 export default {
   components: {
-    Swiper
+    Swiper,
+    LBCircleCount
   },
   setup(props, { emit }) {
     const mySwiper = ref(null)
@@ -45,9 +50,11 @@ export default {
         emit('init', swiper)
       })
     }
-
+    const current = ref(0)
     const slideChange = (swiper) => {
       emit('slideChange', swiper)
+      current.value = swiper.realIndex
+      console.log(swiper.realIndex)
     }
 
     return {
@@ -56,7 +63,8 @@ export default {
 
       swiperList,
       initMainSwiper,
-      slideChange
+      slideChange,
+      current
     }
   }
 }
