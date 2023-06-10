@@ -121,7 +121,34 @@ export default defineComponent({
         ref="arrowImage"
       />
     </div>
-    <div class="progress-info-model"></div>
+    <div class="progress-info-model">
+      <div
+        :class="[
+          'item_',
+          {
+            active: currentIndex == index
+          }
+        ]"
+        v-for="(item, index) in data"
+        :key="$uuid()"
+        v-show="index == currentIndex"
+      >
+        <div class="type">{{ item.type }}</div>
+        <div class="title">{{ item.name }}</div>
+        <div class="content">
+          <p class="text-ellipsis-4">
+            {{ item.desc }}
+          </p>
+        </div>
+        <div class="white-circle">
+          <a href="javascript:(0)">
+            <img src="	http://www.lontend.com/assets/index/image/red_add.png" alt="" />
+          </a>
+        </div>
+        <div class="sanjiao"></div>
+        <div class="more_case">更多案例</div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -180,7 +207,128 @@ export default defineComponent({
     }
   }
   .progress-info-model {
+    position: absolute;
+    right: 3.47rem;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 20;
+    background-color: rgba(255, 255, 255, 0.8);
+    height: 540px;
+    max-width: 400px;
+    .item_ {
+      padding: 0.81rem 0.53rem;
+      .type {
+        font-size: 0.18rem;
+        color: #a0141a;
+        margin-bottom: 0.3rem;
+      }
+      .title {
+        font-size: 0.42rem;
+        color: #333333;
+        margin-bottom: 0.45rem;
+      }
+      .content p {
+        font-size: 0.16rem;
+        color: #333333;
+        line-height: 0.3rem;
+        margin-bottom: 0.22rem;
+      }
+
+      div.sanjiao {
+        position: absolute;
+        content: '';
+        left: -0.4rem;
+        top: 0.6rem;
+        width: 0.4rem;
+        height: 0.6rem;
+        clip-path: polygon(100% 80%, 100% 0%, 0% 95%);
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+      div.more_case {
+        transition: all 0.3s;
+        align-self: flex-end;
+        height: 0.92rem;
+        background: #a0141a;
+        font-size: 0.14rem;
+        color: #ffffff;
+        line-height: 0.92rem;
+        text-align: center;
+        position: absolute;
+        right: 100%;
+        bottom: 0px;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .white-circle {
+        margin-top: 0.3rem;
+        a {
+          width: 0.5rem;
+          height: 0.5rem;
+          text-align: center;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          border: 0.02rem solid rgba(160, 20, 26, 0.4);
+          img {
+            width: 0.16rem;
+            height: 0.16rem;
+          }
+          &:before {
+            content: '';
+            position: absolute;
+            top: -0.02rem;
+            left: -0.02rem;
+            right: -0.02rem;
+            bottom: -0.02rem;
+            border-radius: 50%;
+          }
+          &:hover:before {
+            border: 0.02rem solid rgba(160, 20, 26, 0.8);
+            animation: spin 2s infinite linear;
+          }
+        }
+      }
+      @keyframes spin {
+        0%,
+        100% {
+          clip-path: inset(0 0 60% 0);
+        }
+        25% {
+          clip-path: inset(0 60% 0 0);
+        }
+        50% {
+          clip-path: inset(60% 0 0 0);
+        }
+        75% {
+          clip-path: inset(0 0 0 60%);
+        }
+      }
+      &.active {
+        .more_case {
+          width: 0.92rem;
+          animation: widthMoreCase 0.4s forwards;
+        }
+        @keyframes widthMoreCase {
+          from {
+            width: 0;
+          }
+          to {
+            width: 0.92rem;
+          }
+        }
+      }
+    }
   }
+}
+.text-ellipsis-4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 @keyframes bottomToTop {
