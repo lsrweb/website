@@ -4,11 +4,13 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay } from 'swiper'
 import { data } from './data'
 import { computed } from 'vue'
+import { RouterLink } from 'vue-router'
 
 export default defineComponent({
   components: {
     Swiper,
-    SwiperSlide
+    SwiperSlide,
+    RouterLink
   },
   setup(props, { emit }) {
     const swiperRef = ref(null)
@@ -122,32 +124,36 @@ export default defineComponent({
       />
     </div>
     <div class="progress-info-model">
-      <div
-        :class="[
-          'item_',
-          {
-            active: currentIndex == index
-          }
-        ]"
-        v-for="(item, index) in data"
-        :key="$uuid()"
-        v-show="index == currentIndex"
-      >
-        <div class="type">{{ item.type }}</div>
-        <div class="title">{{ item.name }}</div>
-        <div class="content">
-          <p class="text-ellipsis-4">
-            {{ item.desc }}
-          </p>
+      <TransitionGroup mode="out" name="heightAnimate">
+        <div
+          :class="[
+            'item_',
+            {
+              active: currentIndex == index
+            }
+          ]"
+          v-for="(item, index) in data"
+          :key="$uuid()"
+          v-show="index == currentIndex"
+        >
+          <div class="type">{{ item.type }}</div>
+          <div class="title">{{ item.name }}</div>
+          <div class="content">
+            <p class="text-ellipsis-4">
+              {{ item.desc }}
+            </p>
+          </div>
+          <div class="white-circle">
+            <a href="javascript:(0)">
+              <img src="	http://www.lontend.com/assets/index/image/red_add.png" alt="" />
+            </a>
+          </div>
+          <div class="sanjiao"></div>
+          <div class="more_case">
+            <RouterLink to="more_case"> 更多案例 </RouterLink>
+          </div>
         </div>
-        <div class="white-circle">
-          <a href="javascript:(0)">
-            <img src="	http://www.lontend.com/assets/index/image/red_add.png" alt="" />
-          </a>
-        </div>
-        <div class="sanjiao"></div>
-        <div class="more_case">更多案例</div>
-      </div>
+      </TransitionGroup>
     </div>
   </div>
 </template>
@@ -216,7 +222,8 @@ export default defineComponent({
     height: 540px;
     max-width: 400px;
     .item_ {
-      padding: 0.81rem 0.53rem;
+      // padding: 0.81rem 0.53rem;
+      overflow: hidden;
       .type {
         font-size: 0.18rem;
         color: #a0141a;
@@ -307,9 +314,11 @@ export default defineComponent({
         }
       }
       &.active {
+        padding: 0.81rem 0.53rem;
+
         .more_case {
           width: 0.92rem;
-          animation: widthMoreCase 0.4s forwards;
+          animation: widthMoreCase 0.8s forwards;
         }
         @keyframes widthMoreCase {
           from {
@@ -341,5 +350,24 @@ export default defineComponent({
 }
 .bottomToTop {
   animation: bottomToTop 0.3s;
+}
+
+.heightAnimate-enter-active {
+  animation: heightAnimate 3.8s;
+  padding-bottom: 0 !important;
+}
+.heightAnimate-leave-active {
+  animation: heightAnimate 3.8s reverse;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  display: none !important;
+}
+@keyframes heightAnimate {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
 }
 </style>
