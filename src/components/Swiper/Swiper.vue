@@ -54,7 +54,6 @@ export default {
     const slideChange = (swiper) => {
       emit('slideChange', swiper)
       current.value = swiper.realIndex
-      console.log(swiper.realIndex)
     }
 
     return {

@@ -11,7 +11,7 @@
         <div class="main-mid-box">
           <div class="main-mid-assets">
             <div class="main-mid-num scroll">
-              <strong class="scroll-number" data-step="0.1" data-speed="3s">50</strong>
+              <strong class="scroll-number">50</strong>
               <b>+</b>
               <span>亿</span>
             </div>
@@ -20,14 +20,14 @@
           <div class="main-mid-line"></div>
           <div class="main-mid-time">
             <div class="main-mid-num">
-              <strong class="scroll-number" data-step="150">2010</strong>
+              <strong class="scroll-number">2010</strong>
             </div>
             <div class="main-mid-text">成立时间</div>
           </div>
           <div class="main-mid-line"></div>
           <div class="main-mid-partner">
             <div class="main-mid-num">
-              <strong class="scroll-number" data-step="40">1000</strong>
+              <strong class="scroll-number">1000</strong>
               <span>+</span>
             </div>
             <div class="main-mid-text">合作伙伴</div>
@@ -58,14 +58,13 @@ export default defineComponent({
   setup(props, ctx) {
     onMounted(() => {
       document.querySelectorAll('.scroll-number').forEach((element) => {
-        const scroller = new NumberScroll({
-          el: element,
-          step: element.dataset.step,
-          speed: element.dataset.speed,
-          delay: element.dataset.delay,
-          init: true,
-          callback: null
-        })
+        const options = {}
+
+        if (element.dataset.speed) {
+          options.speed = element.dataset.speed
+        }
+
+        const scroller = new NumberScroll({ el: element, ...options })
       })
     })
     return {}
