@@ -51,13 +51,13 @@ class NumberScroll {
   }
 
   animateDelay(startTime, delay, duration, endNumber, startNumber, callback) {
-    const time = Date.now() - startTime - delay
+    const time = Date.now() - startTime - delay //  获取当前时间并计算出时间差值
     // 如果时间超过了持续时间,则停止滚动
     if (time >= duration) {
-      this.stop()
-      this.$el.textContent = endNumber
+      this.stop() // 停止滚动
+      this.$el.textContent = endNumber // 设置最终的数字
       if (callback) {
-        callback()
+        callback() // 执行回调函数
       }
       return
     }

@@ -55,13 +55,13 @@
           <img
             src="http://www.lontend.com/assets/index/image/menu.png"
             alt=""
-            v-show="!menuToggle"
+            v-show="menuToggle"
             @click="menuToggle = !menuToggle"
           />
           <img
             src="http://www.lontend.com/assets/index/image/close.png"
             alt=""
-            v-show="menuToggle"
+            v-show="!menuToggle"
             @click="menuToggle = !menuToggle"
           />
         </div>
