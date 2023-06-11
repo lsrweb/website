@@ -16,6 +16,9 @@
       <SwiperSlide data-hash="4">
         <page5 @init="initPage05" ref="page05Init"></page5>
       </SwiperSlide>
+      <SwiperSlide data-hash="5">
+        <page6 @init="initPage05" ref="page06Init"></page6>
+      </SwiperSlide>
     </template>
   </swiperParent>
 </template>
@@ -30,6 +33,7 @@ import page2 from './Index/Page2/index.vue'
 import page3 from './Index/Page3/index.vue'
 import page4 from './Index/Page4/index.vue'
 import page5 from './Index/Page5/index.vue'
+import page6 from './Index/Page6/index.vue'
 
 const mainSwiperRef = ref(null)
 const initMainSwiper = (swiper) => {
@@ -81,5 +85,11 @@ const page05Init = ref(null)
 // eslint-disable-next-line no-unused-vars
 const initPage05 = () => {
   console.log('%c第五屏加载完成', 'color: green; font-size: 12px;')
+}
+
+const page06Init = ref(null)
+// eslint-disable-next-line no-unused-vars
+const initPage06 = () => {
+  console.log('%c第六屏加载完成', 'color: green; font-size: 12px;')
 }
 </script>
