@@ -13,7 +13,7 @@
       <SwiperSlide data-hash="3">
         <page4 @init="initPage04" ref="page04Init"></page4>
       </SwiperSlide>
-      <SwiperSlide data-hash="3">
+      <SwiperSlide data-hash="4">
         <page5 @init="initPage05" ref="page05Init"></page5>
       </SwiperSlide>
     </template>
