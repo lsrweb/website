@@ -1,5 +1,5 @@
 <script>
-import { defineComponent, onMounted, nextTick, ref } from 'vue'
+import { defineComponent, nextTick, ref } from 'vue'
 import { data } from './data'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 
