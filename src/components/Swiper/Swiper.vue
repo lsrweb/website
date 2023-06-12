@@ -14,7 +14,7 @@
     >
       <slot></slot>
       <template v-slot:container-end>
-        <LBCircleCount :total="6" :current="current" />
+        <LBCircleCount :current="current" />
       </template>
     </Swiper>
   </div>

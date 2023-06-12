@@ -124,7 +124,7 @@ export default defineComponent({
       />
     </div>
     <div class="progress-info-model">
-      <TransitionGroup mode="out" name="heightAnimate">
+      <TransitionGroup mode="out-in" name="heightAnimate">
         <div
           :class="[
             'item_',

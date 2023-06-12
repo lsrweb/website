@@ -11,7 +11,7 @@
         <div class="main-mid-box">
           <div class="main-mid-assets">
             <div class="main-mid-num scroll">
-              <strong class="scroll-number">50</strong>
+              <strong class="scroll-number" data-speed="">50</strong>
               <b>+</b>
               <span>亿</span>
             </div>

@@ -20,6 +20,7 @@ export default defineComponent({
       modules: [],
       data: data.map((item) => {
         item.showContent = false
+
         return item
       }),
       initSwiper,
