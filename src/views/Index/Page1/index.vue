@@ -50,12 +50,20 @@ export default defineComponent({
         })
       })
     }
+    const unsetAnimate = (swiper) => {
+      const initOneClientWidthArrEl =
+        swiper.slides[0].querySelectorAll('.title_ p')
+      initOneClientWidthArrEl.forEach((el) => {
+        el.style.visibility = 'hidden'
+      })
+    }
 
     return {
       swiperRef,
       transitionEnd,
       init,
       setPageOneAnimate,
+      unsetAnimate,
       Autoplay,
       Navigation
     }

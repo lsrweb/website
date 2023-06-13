@@ -12,6 +12,7 @@
       @init="initMainSwiper"
       @slideChange="slideChange"
       @transition-end="transitionEnd"
+      @transition-start="transitionStart"
     >
       <slot></slot>
       <template v-slot:container-end>
@@ -64,6 +65,10 @@ export default {
       emit('transitionEnd', swiper)
     }
 
+    const transitionStart = (swiper) => {
+      emit('transitionStart', swiper)
+    }
+
     return {
       mySwiper,
       modules: [Mousewheel, HashNavigation],
@@ -72,6 +77,7 @@ export default {
       initMainSwiper,
       slideChange,
       transitionEnd,
+      transitionStart,
       current
     }
   }

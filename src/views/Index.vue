@@ -3,6 +3,7 @@
     @init="initMainSwiper"
     @slideChange="mainSlideChange"
     @transitionEnd="transitionEnd"
+    @transitionStart="transitionStart"
   >
     <template #default>
       <SwiperSlide data-hash="0">
@@ -59,6 +60,14 @@ const transitionEnd = (swiper) => {
   switch (swiper.realIndex) {
     case 0:
       page01Init.value.setPageOneAnimate(page01Swiper.value)
+      break
+  }
+}
+
+const transitionStart = (swiper) => {
+  switch (swiper.realIndex) {
+    case 0:
+      page01Init.value.unsetAnimate(page01Swiper.value)
       break
   }
 }
