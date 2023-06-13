@@ -1,5 +1,5 @@
 <script>
-import { defineComponent, ref, nextTick } from 'vue'
+import { defineComponent, ref, nextTick, onMounted } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay } from 'swiper'
 import { data } from './data'
@@ -49,12 +49,19 @@ export default defineComponent({
     }
 
     const arrowImage = ref(null)
+    const windowWidth = ref(window.innerWidth)
     const computedPostion = computed(() => {
-      const width = window.innerWidth,
+      const width = windowWidth.value,
         itemClientWidth = width / 5
       return {
         left: `${itemClientWidth * currentIndex.value + itemClientWidth / 2}px`,
         transform: 'translateX(-50%)'
+      }
+    })
+
+    onMounted(() => {
+      window.onresize = () => {
+        windowWidth.value = window.innerWidth
       }
     })
 
@@ -145,7 +152,10 @@ export default defineComponent({
           </div>
           <div class="white-circle">
             <a href="javascript:(0)">
-              <img src="	http://www.lontend.com/assets/index/image/red_add.png" alt="" />
+              <img
+                src="	http://www.lontend.com/assets/index/image/red_add.png"
+                alt=""
+              />
             </a>
           </div>
           <div class="sanjiao"></div>
@@ -210,6 +220,19 @@ export default defineComponent({
       top: 1rem;
       transition: all 0.3s;
       animation: bottomToTop 0.3s forwards;
+    }
+
+    @media (max-width: 1200px) {
+      img {
+        width: 0.73rem;
+        height: 30px;
+      }
+      .item_ {
+        height: 0.45rem;
+        &.active {
+          height: 0.68rem;
+        }
+      }
     }
   }
   .progress-info-model {
@@ -330,6 +353,22 @@ export default defineComponent({
         }
       }
     }
+    @media (max-width: 1200px) {
+      right: 10px;
+      height: 310px;
+      margin-left: 75px;
+      width: 60%;
+      .item_ {
+        .type,
+        .title {
+          margin-bottom: 10px;
+        }
+        .content p {
+          font-size: 0.24rem;
+          line-height: 0.4rem;
+        }
+      }
+    }
   }
 }
 .text-ellipsis-4 {
@@ -340,16 +379,31 @@ export default defineComponent({
   -webkit-box-orient: vertical;
 }
 
-@keyframes bottomToTop {
-  0% {
-    top: 1;
+@media (min-width: 1200px) {
+  @keyframes bottomToTop {
+    0% {
+      top: 1;
+    }
+    100% {
+      top: 0.3rem;
+    }
   }
-  100% {
-    top: 0.3rem;
+  .bottomToTop {
+    animation: bottomToTop 0.3s;
   }
 }
-.bottomToTop {
-  animation: bottomToTop 0.3s;
+@media (max-width: 1200px) {
+  @keyframes bottomToTop {
+    0% {
+      top: 1;
+    }
+    100% {
+      top: 44px;
+    }
+  }
+  .bottomToTop {
+    animation: bottomToTop 0.3s;
+  }
 }
 
 .heightAnimate-enter-active {

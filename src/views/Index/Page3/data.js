@@ -10,12 +10,14 @@ export const data = [
     name: '国际健康\n医美中心',
     type: '产业案例',
     desc: '一个时尚于科技的沉浸式体验空间,一场时尚、精致的都会奢华体验之旅',
-    image: 'http://qiniu.picgo.srliforever.ltd/ddde08c7fc9e83767deda76f4e5a64f1_3138206301741634501.webp'
+    image:
+      'http://qiniu.picgo.srliforever.ltd/ddde08c7fc9e83767deda76f4e5a64f1_3138206301741634501.webp'
   },
   {
     name: '朗庭荟',
     type: '产业案例',
     desc: '有健康、有生活、有朗庭、亦有时与远方。----朗庭荟,一个时尚于科技的沉浸式体验空间,一场时尚、精致的都会奢华体验之旅,向着未来的生活方式,为您打开一扇全新的大门。',
-    image: 'http://qiniu.picgo.srliforever.ltd/ddde08c7fc9e83767deda76f4e5a64f1_3138206301741634501.webp'
+    image:
+      'http://qiniu.picgo.srliforever.ltd/ddde08c7fc9e83767deda76f4e5a64f1_3138206301741634501.webp'
   }
 ]
