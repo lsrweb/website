@@ -50,6 +50,8 @@ const mainSlideChange = (swiper) => {
   function setHash(VAL) {
     location.hash = VAL
   }
+  if (window.innerWidth < 1200) return
+
   setHash(hash)
 }
 
@@ -67,6 +69,8 @@ onMounted(() => {
     if (!hash) return
     if (!mainSwiperRef.value)
       return console.error('main swiper is not ready,init failed!')
+    if (window.innerWidth < 1200) return
+
     mainSwiperRef.value.slideTo(hash, 0, false)
   })
 })
