@@ -355,7 +355,7 @@ export default defineComponent({
     }
     @media (max-width: 1200px) {
       right: 10px;
-      height: 310px;
+      height: 350px;
       margin-left: 75px;
       width: 60%;
       .item_ {
