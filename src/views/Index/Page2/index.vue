@@ -66,11 +66,11 @@
         </div>
         <div
           class="bg-black"
-          :style="{ height: realIndex == index ? '0' : '214px' }"
+          :style="{ height: realIndex == index ? '0' : '100%' }"
         ></div>
         <div
           class="bg-white"
-          :style="{ height: realIndex == index ? '214px' : '0' }"
+          :style="{ height: realIndex == index ? '100%' : '0' }"
         ></div>
       </div>
     </div>
