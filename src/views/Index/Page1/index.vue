@@ -1,6 +1,6 @@
 <script>
 import { SwiperSlide, Swiper } from 'swiper/vue'
-import { defineComponent, getCurrentInstance, nextTick, ref, defineEmits } from 'vue'
+import { defineComponent, getCurrentInstance, nextTick, ref } from 'vue'
 import { Autoplay, Navigation } from 'swiper'
 
 export default defineComponent({
@@ -9,8 +9,6 @@ export default defineComponent({
     SwiperSlide
   },
   setup() {
-    defineEmits(['init'])
-
     // 拦截 swiper 实例
     const swiperRef = ref(null)
     const { proxy } = getCurrentInstance()

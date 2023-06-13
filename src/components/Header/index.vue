@@ -7,9 +7,6 @@
       <a href="">
         <img src="http://www.lontend.com/assets/index/image/mobile_logo.png" alt="" class="pe-logo" />
       </a>
-      <a href="">
-        <img src="http://www.lontend.com/assets/index/image/mobile_logo.png" alt="" class="pe-logo" />
-      </a>
       <ul class="navigation" v-show="!menuToggle">
         <li v-for="(item, index) in navData" :key="index">
           <router-link :to="item.path">{{ item.name }}</router-link>
@@ -52,20 +49,57 @@
           </div>
         </div>
         <div class="toggle-box">
-          <img
-            src="http://www.lontend.com/assets/index/image/menu.png"
-            alt=""
-            v-show="menuToggle"
-            @click="menuToggle = !menuToggle"
-          />
-          <img
-            src="http://www.lontend.com/assets/index/image/close.png"
-            alt=""
-            v-show="!menuToggle"
-            @click="menuToggle = !menuToggle"
-          />
+          <div class="pc">
+            <img
+              src="http://www.lontend.com/assets/index/image/menu.png"
+              alt=""
+              v-show="menuToggle"
+              @click="menuToggle = !menuToggle"
+            />
+            <img
+              src="http://www.lontend.com/assets/index/image/close.png"
+              alt=""
+              v-show="!menuToggle"
+              @click="menuToggle = !menuToggle"
+            />
+          </div>
+          <div class="pe">
+            <img
+              src="http://www.lontend.com/assets/index/image/m_menuimg.png"
+              alt=""
+              v-show="!menuToggle"
+              @click="menuToggle = !menuToggle"
+            />
+            <img
+              src="http://www.lontend.com/assets/index/image/gb.png"
+              alt=""
+              v-show="menuToggle"
+              @click="menuToggle = !menuToggle"
+            />
+          </div>
         </div>
       </div>
+    </div>
+    <Transition mode="in" name="slide-bottom">
+      <div class="searchForm" v-show="searchToggle">
+        <div class="searchBox">
+          <input type="text" placeholder="请输入关键字" name="" id="" value="" />
+          <img src="http://www.lontend.com/assets/index/image/seach.png" class="search_onclick" />
+        </div>
+      </div>
+    </Transition>
+
+    <div class="pe-nav">
+      <ul class="pe-menu container">
+        <li v-for="(item, index) in navData" :key="index">
+          <router-link :to="item.path">{{ item.name }}</router-link>
+          <ul class="submenu" v-if="item.children && item.children.length > 0">
+            <li v-for="(child, index) in item.children" :key="index">
+              <router-link :to="child.path">{{ child.name }}</router-link>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -161,10 +195,11 @@ export default {
 
   .container {
     width: 85%;
-    height: 100%;
+    height: inherit;
     margin: 0 auto;
     > a {
-      display: inline-block;
+      display: flex;
+      align-items: center;
       height: 100%;
       float: left;
       img {
@@ -177,6 +212,7 @@ export default {
     img.pc-logo {
       width: 2.2rem;
       height: 1.1rem;
+      margin-top: 24px;
     }
     ul.navigation {
       width: 76%;
@@ -274,25 +310,151 @@ export default {
           width: 22px;
           margin-right: 10px;
         }
-        .pe {
-          display: none;
-        }
-        @media screen and (max-width: 1200px) {
-          .pe {
-            display: block;
-          }
-          .pc {
-            display: none;
-          }
-        }
       }
       .toggle-box {
         float: right;
         img {
           width: 32px;
         }
+        .pe {
+          img {
+            width: 22px;
+          }
+        }
+      }
+      @media screen and (max-width: 1200px) {
+        .pe {
+          display: block;
+        }
+        .pc {
+          display: none;
+        }
+      }
+    }
+
+    @media (max-width: 1200px) {
+      img.pe-logo {
+        display: block;
+        width: 2.2rem;
+      }
+      img.pc-logo {
+        display: none;
+      }
+      ul.navigation {
+        display: none;
+      }
+      .toggle-show {
+        margin-top: 0;
+        height: 100%;
+        width: max-content;
+
+        > div {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .search-box {
+          margin-top: 0;
+          margin-right: 10px;
+          .pe {
+            display: none;
+          }
+          .pe {
+            display: block;
+            img {
+              width: 16px;
+            }
+          }
+        }
       }
     }
   }
+  @media (max-width: 1200px) {
+    background-color: #fff;
+  }
+  .searchForm {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px 0;
+    position: absolute;
+    left: 0;
+    top: 70px;
+    font-size: 16px;
+    color: #666;
+    .searchBox {
+      width: 500px;
+      margin: 0 auto;
+      position: relative;
+      padding: 5px 15px;
+      line-height: 34px;
+      box-sizing: border-box;
+      color: #606266;
+      background-color: #fff;
+      background-image: none;
+      border: 1px solid #dcdfe6;
+      border-radius: 4px;
+      input {
+        width: 92%;
+        font-family: inherit;
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        color: fieldtext;
+      }
+      img {
+        position: absolute;
+        right: 10px;
+        top: 13px;
+        width: 18px;
+      }
+    }
+  }
+}
+
+.pe-nav {
+  background-color: #fff;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  a {
+    display: block;
+    height: 50px;
+    color: #000;
+    line-height: 50px;
+    padding-left: 0;
+    font-size: 16px;
+  }
+  > ul {
+    display: flex;
+    flex-direction: column;
+    li {
+      border-bottom: 1px solid #eae9e9;
+    }
+    .submenu {
+      display: none;
+    }
+  }
+}
+
+// animate
+@keyframes slideBottom {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.slide-bottom-enter-active {
+  animation: slideBottom 0.3s;
+}
+.slide-bottom-leave-active {
+  animation: slideBottom 0.3s reverse;
 }
 </style>
