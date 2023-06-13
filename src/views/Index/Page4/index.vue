@@ -32,6 +32,7 @@ export default defineComponent({
 
 <template>
   <div class="page04">
+    <h1>新闻中心</h1>
     <Swiper
       class="bottomSwiper"
       :slides-per-view="4"
@@ -42,6 +43,20 @@ export default defineComponent({
       :modules="modules"
       @init="initSwiper"
       :speed="1500"
+      :breakpoints="{
+        320: {
+          slidesPerView: 1
+        },
+        768: {
+          slidesPerView: 2
+        },
+        1024: {
+          slidesPerView: 3
+        },
+        1200: {
+          slidesPerView: 4
+        }
+      }"
     >
       <SwiperSlide v-for="item in data" :key="$uuid()">
         <div
@@ -51,7 +66,9 @@ export default defineComponent({
         >
           <Transition name="fadeOut" mode="in-out">
             <div v-show="!item.showContent">
-              <div class="main-concent-news-time mid-top-titel">{{ item.date }}</div>
+              <div class="main-concent-news-time mid-top-titel">
+                {{ item.date }}
+              </div>
               <div class="main-concent-news-title mid-top-titel">
                 {{ item.title }}
               </div>
@@ -60,7 +77,9 @@ export default defineComponent({
           <Transition name="slidetBottom" mode="out-in">
             <div class="main-concent-botbox" v-show="item.showContent">
               <div class="main-concent-innerbox">
-                <div class="main-concent-moreNews" v-show="item.showContent"><a href="/news">更多新闻</a></div>
+                <div class="main-concent-moreNews" v-show="item.showContent">
+                  <a href="/news">更多新闻</a>
+                </div>
                 <div class="main-concent-botbox_content">
                   <div class="main-concent-botbox-text">
                     <div class="main-concent-toptitle">{{ item.type }}</div>
@@ -79,7 +98,10 @@ export default defineComponent({
 
                     <div class="white-circle">
                       <a href="javascript:(0)">
-                        <img src="http://www.lontend.com/assets/index/image/red_add.png" alt="" />
+                        <img
+                          src="http://www.lontend.com/assets/index/image/red_add.png"
+                          alt=""
+                        />
                       </a>
                     </div>
                   </div>
@@ -108,10 +130,19 @@ export default defineComponent({
 .page04 {
   width: 100%;
   height: 100%;
-  background: url('http://www.lontend.com/uploads/20230216/98645a5254c86a0e1afbc9a32c330278.jpg') no-repeat center
-    center;
+  background: url('http://www.lontend.com/uploads/20230216/98645a5254c86a0e1afbc9a32c330278.jpg')
+    no-repeat center center;
   background-size: cover;
   position: relative;
+  h1 {
+    font-size: 0.5rem;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    top: 10%;
+    font-weight: lighter;
+    left: 20px;
+  }
   .bottomSwiper {
     width: 100%;
     height: 3.5rem;

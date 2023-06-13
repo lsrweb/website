@@ -2,7 +2,10 @@
   <div class="page5">
     <div class="content-container h-100">
       <!--bg5.jpg-->
-      <img src="http://www.lontend.com/uploads/20230224/9282b246c840fe13d93a1b41dc18f3c5.jpg" class="bg-cover" />
+      <img
+        src="http://www.lontend.com/uploads/20230224/9282b246c840fe13d93a1b41dc18f3c5.jpg"
+        class="bg-cover"
+      />
       <div class="main-concent">
         <dl class="main-top-title">
           <dt class="main-top-dt">朗庭，缔造臻美生活</dt>
@@ -242,6 +245,11 @@ export default defineComponent({
         // left: -2.5rem;
         left: 0.15rem;
       }
+    }
+
+    @media (max-width: 1200px) {
+      width: 90%;
+      left: 5%;
     }
   }
 }

@@ -1,33 +1,66 @@
 <template>
   <div class="page6">
     <div class="content-container h-100">
-      <img src="http://www.lontend.com/assets/index/image/bg6.png?v=1" class="bg-cover" />
+      <img
+        src="http://www.lontend.com/assets/index/image/bg6.png?v=1"
+        class="bg-cover"
+      />
       <div class="main-concent">
         <div class="main-concent-top-box">
           <div class="main-concent-top-guanyu">
-            <div class="main-concent-top-title"><a style="color: #c2c2c2" href="/about">关于朗庭</a></div>
-            <div class="main-left-text"><a style="color: #c2c2c2" href="/summary">集团概况</a></div>
-            <div class="main-left-text"><a style="color: #c2c2c2" href="/duty">社会责任</a></div>
-            <div class="main-left-text"><a style="color: #c2c2c2" href="/deve">发展历程</a></div>
-            <div class="main-left-text"><a style="color: #c2c2c2" href="/contact">联系我们</a></div>
+            <div class="main-concent-top-title">
+              <a style="color: #c2c2c2" href="/about">关于朗庭</a>
+            </div>
+            <div class="main-left-text">
+              <a style="color: #c2c2c2" href="/summary">集团概况</a>
+            </div>
+            <div class="main-left-text">
+              <a style="color: #c2c2c2" href="/duty">社会责任</a>
+            </div>
+            <div class="main-left-text">
+              <a style="color: #c2c2c2" href="/deve">发展历程</a>
+            </div>
+            <div class="main-left-text">
+              <a style="color: #c2c2c2" href="/contact">联系我们</a>
+            </div>
           </div>
           <div class="main-concent-top-guanyu">
-            <div class="main-concent-top-title"><a style="color: #c2c2c2" href="/layoutHome">产业布局</a></div>
-            <div class="main-left-text"><a style="color: #c2c2c2" href="/layoutEstate">文化旅游 </a></div>
-            <div class="main-left-text"><a style="color: #c2c2c2" href="/charity">国际健康</a></div>
-            <div class="main-left-text"><a style="color: #c2c2c2" href="/layoutCity">朗庭荟</a></div>
+            <div class="main-concent-top-title">
+              <a style="color: #c2c2c2" href="/layoutHome">产业布局</a>
+            </div>
+            <div class="main-left-text">
+              <a style="color: #c2c2c2" href="/layoutEstate">文化旅游 </a>
+            </div>
+            <div class="main-left-text">
+              <a style="color: #c2c2c2" href="/charity">国际健康</a>
+            </div>
+            <div class="main-left-text">
+              <a style="color: #c2c2c2" href="/layoutCity">朗庭荟</a>
+            </div>
           </div>
           <div class="main-concent-top-guanyu">
-            <div class="main-concent-top-title"><a style="color: #c2c2c2" href="/case_recom">产业案例</a></div>
-            <div class="main-left-text"><a style="color: #c2c2c2" href="/case_recom">推荐案例</a></div>
-            <div class="main-left-text"><a style="color: #c2c2c2" href="/case_class_list">分类案例</a></div>
+            <div class="main-concent-top-title">
+              <a style="color: #c2c2c2" href="/case_recom">产业案例</a>
+            </div>
+            <div class="main-left-text">
+              <a style="color: #c2c2c2" href="/case_recom">推荐案例</a>
+            </div>
+            <div class="main-left-text">
+              <a style="color: #c2c2c2" href="/case_class_list">分类案例</a>
+            </div>
           </div>
           <div class="main-concent-top-guanyu">
-            <div class="main-concent-top-title"><a style="color: #c2c2c2" href="/news">新闻中心</a></div>
+            <div class="main-concent-top-title">
+              <a style="color: #c2c2c2" href="/news">新闻中心</a>
+            </div>
           </div>
           <div class="main-concent-top-guanyu">
-            <div class="main-concent-top-title"><a style="color: #c2c2c2" href="/talent">人才战略</a></div>
-            <div class="main-left-text"><a style="color: #c2c2c2" href="/job_recruit">职位招聘</a></div>
+            <div class="main-concent-top-title">
+              <a style="color: #c2c2c2" href="/talent">人才战略</a>
+            </div>
+            <div class="main-left-text">
+              <a style="color: #c2c2c2" href="/job_recruit">职位招聘</a>
+            </div>
           </div>
         </div>
         <div class="main-concent-mid-codebox">
@@ -35,12 +68,15 @@
           <div class="main-left-photo">
             <div class="main-left-photoss">TEL: 400-881-8722</div>
             <div class="main-left-emila">咨询邮箱：LT@lontend.com</div>
-            <div class="main-left-emila">地址：江苏省南京市建邺区江东中路100号朗昇希尔顿酒店2楼</div>
+            <div class="main-left-emila">
+              地址：江苏省南京市建邺区江东中路100号朗昇希尔顿酒店2楼
+            </div>
           </div>
         </div>
         <div class="main-bottom-addres">
           <div class="main-bottom-riods">
-            Copyright © 2022 江苏朗庭控股集团有限公司版权所有. 苏ICP备2022038333号
+            Copyright © 2022 江苏朗庭控股集团有限公司版权所有.
+            苏ICP备2022038333号
             <span>
               <a href="/legalAid" style="color: inherit">法律声明</a> |
               <a href="/privacy" style="color: inherit">隐私政策</a>
@@ -64,7 +100,9 @@
       </div>
       <div class="main-left-map">
         <div>
-          <img src="http://www.lontend.com/uploads/20220928/32051cb07b39ffd8dcd4d7569aa5bd0a.png" />
+          <img
+            src="http://www.lontend.com/uploads/20220928/32051cb07b39ffd8dcd4d7569aa5bd0a.png"
+          />
         </div>
       </div>
     </div>
@@ -254,6 +292,65 @@ export default defineComponent({})
   .main-bottom-reoprt img {
     width: 0.3rem;
     height: 0.3rem;
+  }
+  @media (max-width: 1200px) {
+    .main-concent-top-box {
+      width: auto;
+      left: 2%;
+      right: 2%;
+      top: auto;
+      bottom: 3rem;
+      /*3.4rem*/
+      z-index: 777;
+    }
+    .main-concent-top-guanyu {
+      width: auto;
+    }
+    .main-bottom-reoprt {
+      margin-left: auto;
+      margin-right: auto;
+      /*margin-top: -.5rem !important; */
+    }
+    .main-bottom-addres {
+      bottom: 0.1rem;
+      /*    top: auto; */
+      line-height: normal;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .main-concent-mid-codebox {
+      left: 2%;
+      right: 2%;
+      bottom: 1.6rem;
+      /*1.8rem*/
+      justify-content: space-around;
+      top: auto;
+    }
+    .main-left-photo {
+      text-align: left;
+      margin-left: 0.2rem;
+      margin-top: 0px;
+    }
+    .main-concent-mid-codebox .main-bottom-imgmicroblog img {
+      margin-left: 0.1rem;
+    }
+    .main-bottom-riods span {
+      display: block;
+    }
+    .main-bottom-riods {
+      margin-top: 3%;
+      width: 100%;
+    }
+    .main-concent-top-title {
+      font-size: 0.22rem;
+    }
+    .main-left-text {
+      font-size: 0.2rem;
+      line-height: 0.4rem;
+    }
+    .main-left-map img {
+      width: 7rem;
+    }
   }
 }
 </style>
