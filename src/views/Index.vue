@@ -1,8 +1,12 @@
 <template>
-  <swiperParent @init="initMainSwiper" @slideChange="mainSlideChange">
+  <swiperParent
+    @init="initMainSwiper"
+    @slideChange="mainSlideChange"
+    @transitionEnd="transitionEnd"
+  >
     <template #default>
       <SwiperSlide data-hash="0">
-        <page1 @init="initPage01" />
+        <page1 @init="initPage01" ref="page01Init" />
       </SwiperSlide>
       <SwiperSlide data-hash="1">
         <page2 @init="initPage02" ref="page02Init"></page2>
@@ -49,18 +53,30 @@ const mainSlideChange = (swiper) => {
   setHash(hash)
 }
 
+const transitionEnd = (swiper) => {
+  switch (swiper.realIndex) {
+    case 0:
+      page01Init.value.setPageOneAnimate(page01Swiper.value)
+      break
+  }
+}
+
 onMounted(() => {
   const hash = location.hash.slice(1)
   nextTick(() => {
     if (!hash) return
-    if (!mainSwiperRef.value) return console.error('main swiper is not ready,init failed!')
+    if (!mainSwiperRef.value)
+      return console.error('main swiper is not ready,init failed!')
     mainSwiperRef.value.slideTo(hash, 0, false)
   })
 })
 
 // eslint-disable-next-line no-unused-vars
+const page01Init = ref(null)
+const page01Swiper = ref(null)
 const initPage01 = (swiper) => {
   console.log('%c第一屏加载完成', 'color: green; font-size: 12px;')
+  page01Swiper.value = swiper
 }
 
 const page02Init = ref(null)

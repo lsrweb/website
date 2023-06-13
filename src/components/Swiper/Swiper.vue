@@ -11,6 +11,7 @@
       ref="mySwiper"
       @init="initMainSwiper"
       @slideChange="slideChange"
+      @transition-end="transitionEnd"
     >
       <slot></slot>
       <template v-slot:container-end>
@@ -35,13 +36,16 @@ export default {
 
     const swiperList = [
       {
-        imgSrc: 'http://www.lontend.com/uploads/20230214/f422d360396e6b87f0afcba7039e870b.jpg'
+        imgSrc:
+          'http://www.lontend.com/uploads/20230214/f422d360396e6b87f0afcba7039e870b.jpg'
       },
       {
-        imgSrc: 'http://www.lontend.com/uploads/20230224/a49194f01379d2516675467c050efde3.jpg'
+        imgSrc:
+          'http://www.lontend.com/uploads/20230224/a49194f01379d2516675467c050efde3.jpg'
       },
       {
-        imgSrc: 'http://www.lontend.com/uploads/20230224/2050d9a9dcd66ed6bc8ab403a3bfbdce.jpg'
+        imgSrc:
+          'http://www.lontend.com/uploads/20230224/2050d9a9dcd66ed6bc8ab403a3bfbdce.jpg'
       }
     ]
 
@@ -56,6 +60,10 @@ export default {
       current.value = swiper.realIndex
     }
 
+    const transitionEnd = (swiper) => {
+      emit('transitionEnd', swiper)
+    }
+
     return {
       mySwiper,
       modules: [Mousewheel, HashNavigation],
@@ -63,6 +71,7 @@ export default {
       swiperList,
       initMainSwiper,
       slideChange,
+      transitionEnd,
       current
     }
   }

@@ -22,33 +22,40 @@ export default defineComponent({
       // init nextTick
       nextTick(() => {
         swiper.autoplay.stop() // stop autoplay
-        const initOneClientWidthArrEl = swiper.slides[0].querySelectorAll('.title_ p')
-        // // set text animation
-        initOneClientWidthArrEl.forEach((el) => {
-          const clientWidth = el.clientWidth // get element client width
-          el.style.visibility = 'visible'
-          el.style.width = 0
-          // width from 0 to clientWidth
-          function textAnimate(callback) {
-            const timer = setInterval(() => {
-              if (el.clientWidth < clientWidth) {
-                el.style.width = el.clientWidth + 1 + 'px'
-              } else {
-                clearInterval(timer)
-                callback()
-              }
-            }, 10)
-          }
-          textAnimate(function () {
-            swiper.autoplay.start()
-          })
+        setPageOneAnimate(swiper)
+      })
+    }
+
+    const setPageOneAnimate = (swiper) => {
+      const initOneClientWidthArrEl =
+        swiper.slides[0].querySelectorAll('.title_ p')
+      // // set text animation
+      initOneClientWidthArrEl.forEach((el) => {
+        const clientWidth = el.clientWidth // get element client width
+        el.style.visibility = 'visible'
+        el.style.width = 0
+        // width from 0 to clientWidth
+        function textAnimate(callback) {
+          const timer = setInterval(() => {
+            if (el.clientWidth < clientWidth) {
+              el.style.width = el.clientWidth + 1 + 'px'
+            } else {
+              clearInterval(timer)
+              callback()
+            }
+          }, 10)
+        }
+        textAnimate(function () {
+          swiper.autoplay.start()
         })
       })
     }
+
     return {
       swiperRef,
       transitionEnd,
       init,
+      setPageOneAnimate,
       Autoplay,
       Navigation
     }
@@ -103,7 +110,10 @@ export default defineComponent({
                   }
                 "
               >
-                <img src="http://www.lontend.com/assets/index/image/back_arrow.png" alt="" />
+                <img
+                  src="http://www.lontend.com/assets/index/image/back_arrow.png"
+                  alt=""
+                />
               </div>
               <div
                 class="next-btn"
@@ -118,7 +128,11 @@ export default defineComponent({
                   }
                 "
               >
-                <img src="http://www.lontend.com/assets/index/image/back_arrow.png" alt="" class="rotate-180" />
+                <img
+                  src="http://www.lontend.com/assets/index/image/back_arrow.png"
+                  alt=""
+                  class="rotate-180"
+                />
               </div>
             </div>
           </div>
@@ -150,7 +164,10 @@ export default defineComponent({
                   }
                 "
               >
-                <img src="http://www.lontend.com/assets/index/image/back_arrow.png" alt="" />
+                <img
+                  src="http://www.lontend.com/assets/index/image/back_arrow.png"
+                  alt=""
+                />
               </div>
               <div
                 class="next-btn"
@@ -165,7 +182,11 @@ export default defineComponent({
                   }
                 "
               >
-                <img src="http://www.lontend.com/assets/index/image/back_arrow.png" alt="" class="rotate-180" />
+                <img
+                  src="http://www.lontend.com/assets/index/image/back_arrow.png"
+                  alt=""
+                  class="rotate-180"
+                />
               </div>
             </div>
           </div>
@@ -197,7 +218,10 @@ export default defineComponent({
                   }
                 "
               >
-                <img src="http://www.lontend.com/assets/index/image/back_arrow.png" alt="" />
+                <img
+                  src="http://www.lontend.com/assets/index/image/back_arrow.png"
+                  alt=""
+                />
               </div>
               <div
                 class="next-btn"
@@ -212,7 +236,11 @@ export default defineComponent({
                   }
                 "
               >
-                <img src="http://www.lontend.com/assets/index/image/back_arrow.png" alt="" class="rotate-180" />
+                <img
+                  src="http://www.lontend.com/assets/index/image/back_arrow.png"
+                  alt=""
+                  class="rotate-180"
+                />
               </div>
             </div>
           </div>
