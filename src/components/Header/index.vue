@@ -2,10 +2,18 @@
   <div class="fixed-header">
     <div class="container">
       <a href="">
-        <img src="http://www.lontend.com/assets/index/image/logo.png" alt="" class="pc-logo" />
+        <img
+          src="http://www.lontend.com/assets/index/image/logo.png"
+          alt=""
+          class="pc-logo"
+        />
       </a>
       <a href="">
-        <img src="http://www.lontend.com/assets/index/image/mobile_logo.png" alt="" class="pe-logo" />
+        <img
+          src="http://www.lontend.com/assets/index/image/mobile_logo.png"
+          alt=""
+          class="pe-logo"
+        />
       </a>
       <ul class="navigation" v-show="!menuToggle">
         <li v-for="(item, index) in navData" :key="index">
@@ -69,6 +77,7 @@
               alt=""
               v-show="!menuToggle"
               @click="menuToggle = !menuToggle"
+              class=""
             />
             <img
               src="http://www.lontend.com/assets/index/image/gb.png"
@@ -83,24 +92,52 @@
     <Transition mode="in" name="slide-bottom">
       <div class="searchForm" v-show="searchToggle">
         <div class="searchBox">
-          <input type="text" placeholder="请输入关键字" name="" id="" value="" />
-          <img src="http://www.lontend.com/assets/index/image/seach.png" class="search_onclick" />
+          <input
+            type="text"
+            placeholder="请输入关键字"
+            name=""
+            id=""
+            value=""
+          />
+          <img
+            src="http://www.lontend.com/assets/index/image/seach.png"
+            class="search_onclick"
+          />
         </div>
       </div>
     </Transition>
 
-    <div class="pe-nav">
-      <ul class="pe-menu container">
-        <li v-for="(item, index) in navData" :key="index">
-          <router-link :to="item.path">{{ item.name }}</router-link>
-          <ul class="submenu" v-if="item.children && item.children.length > 0">
-            <li v-for="(child, index) in item.children" :key="index">
-              <router-link :to="child.path">{{ child.name }}</router-link>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+    <Transition mode="in-out" name="slide-right">
+      <div class="pe-nav" v-show="menuToggle">
+        <ul class="pe-menu container">
+          <li v-for="(item, index) in navData" :key="index">
+            <router-link :to="item.path">{{ item.name }}</router-link>
+            <span
+              class="arrow-icon"
+              @click=";[(item.showMenu = !item.showMenu)]"
+              v-show="item.children && item.children.length > 0"
+            >
+              <svg :class="['icon svgfont', { rotate: item.showMenu }]">
+                <use xlink:href="#icon-arrow-right"></use>
+              </svg>
+            </span>
+
+            <Transition mode="out-in" name="slide-left">
+              <ul
+                :class="['submenu', { h100: item.showMenu }]"
+                v-show="
+                  item.children && item.children.length > 0 && item.showMenu
+                "
+              >
+                <li v-for="(child, index) in item.children" :key="index">
+                  <router-link :to="child.path">{{ child.name }}</router-link>
+                </li>
+              </ul>
+            </Transition>
+          </li>
+        </ul>
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -112,7 +149,7 @@ export default {
     const searchToggle = ref(false)
     const menuToggle = ref(false)
 
-    const navData = [
+    const navData = ref([
       {
         name: '首页',
         path: '/'
@@ -141,7 +178,25 @@ export default {
       },
       {
         name: '产业布局',
-        path: '/'
+        path: '/',
+        children: [
+          {
+            name: '集团概况',
+            path: '/'
+          },
+          {
+            name: '社会责任',
+            path: '/'
+          },
+          {
+            name: '发展历程',
+            path: '/'
+          },
+          {
+            name: '联系我们',
+            path: '/'
+          }
+        ]
       },
       {
         name: '产业案例',
@@ -155,7 +210,7 @@ export default {
         name: '人才战略',
         path: '/'
       }
-    ]
+    ])
 
     onMounted(() => {
       function setBaseFontSize() {
@@ -165,16 +220,28 @@ export default {
         } else if (clientWidth > 1920) {
           clientWidth = 1920
         }
-        document.documentElement.style.fontSize = (clientWidth / 1920) * 100 + 'px'
+        document.documentElement.style.fontSize =
+          (clientWidth / 1920) * 100 + 'px'
       }
       setBaseFontSize()
       window.addEventListener('resize', setBaseFontSize)
     })
 
+    // 1200 close menu
+    matchMedia('(min-width: 1200px)').addListener((e) => {
+      if (e.matches) {
+        menuToggle.value = false
+        searchToggle.value = false
+      }
+    })
+
     return {
       searchToggle,
       menuToggle,
-      navData
+      navData: navData.value.map((item) => {
+        item.showMenu = false
+        return item
+      })
     }
   }
 }
@@ -313,6 +380,7 @@ export default {
       }
       .toggle-box {
         float: right;
+
         img {
           width: 32px;
         }
@@ -321,6 +389,9 @@ export default {
             width: 22px;
           }
         }
+      }
+      .pe {
+        display: none;
       }
       @media screen and (max-width: 1200px) {
         .pe {
@@ -429,11 +500,39 @@ export default {
     display: flex;
     flex-direction: column;
     li {
-      border-bottom: 1px solid #eae9e9;
+      position: relative;
+      transition: height 0.3s ease-in-out;
+      a {
+        border-bottom: 1px solid #eae9e9;
+      }
+      .arrow-icon {
+        position: absolute;
+        right: 10px;
+        top: 0;
+        height: 50px;
+        font-size: small;
+
+        .icon,
+        * {
+          width: 20px;
+          height: 100%;
+          transition: all 0.3s ease-in-out;
+        }
+        .rotate {
+          transform: rotate(90deg);
+        }
+      }
     }
     .submenu {
-      display: none;
+      margin-left: 5%;
+      transition: all 0.3s ease-in-out;
+      &.h100 {
+        height: auto;
+      }
     }
+  }
+  @media (min-width: 1200px) {
+    display: none;
   }
 }
 
@@ -456,5 +555,48 @@ export default {
 }
 .slide-bottom-leave-active {
   animation: slideBottom 0.3s reverse;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.slide-left-enter-active {
+  animation: slide-left 0.3s;
+}
+.slide-left-leave-active {
+  animation: slide-left 0.3s reverse;
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.slide-right-enter-active {
+  animation: slide-right 0.3s;
+}
+.slide-right-leave-active {
+  animation: slide-right 0.3s reverse;
 }
 </style>
