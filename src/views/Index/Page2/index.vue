@@ -3,7 +3,7 @@
     <Swiper
       :speed="1500"
       :autoplay="{
-        delay: 5000,
+        delay: 1115000,
         disableOnInteraction: false
       }"
       :nested="true"
@@ -15,7 +15,11 @@
       @transition-end="transitionEnd"
       class="page02-swiper"
     >
-      <SwiperSlide class="relative" v-for="item in swiperData" :key="item.image">
+      <SwiperSlide
+        class="relative"
+        v-for="item in swiperData"
+        :key="item.image"
+      >
         <img :src="item.image" alt="" class="img-full relative z-10" />
         <div :class="['pos-info absolute absolute-y-center']">
           <div class="type-title">
@@ -33,7 +37,10 @@
           </div>
           <div class="white-circle">
             <a href="javascript:(0)">
-              <img src="http://www.lontend.com/assets/index/image/add_white.png" alt="" />
+              <img
+                src="http://www.lontend.com/assets/index/image/add_white.png"
+                alt=""
+              />
             </a>
           </div>
         </div>
@@ -57,8 +64,14 @@
           />
           <div>{{ data.title }}</div>
         </div>
-        <div class="bg-black" :style="{ height: realIndex == index ? '0' : '214px' }"></div>
-        <div class="bg-white" :style="{ height: realIndex == index ? '214px' : '0' }"></div>
+        <div
+          class="bg-black"
+          :style="{ height: realIndex == index ? '0' : '214px' }"
+        ></div>
+        <div
+          class="bg-white"
+          :style="{ height: realIndex == index ? '214px' : '0' }"
+        ></div>
       </div>
     </div>
   </div>
@@ -66,7 +79,13 @@
 
 <script>
 import { SwiperSlide, Swiper } from 'swiper/vue'
-import { getCurrentInstance, nextTick, defineComponent, defineEmits, ref } from 'vue'
+import {
+  getCurrentInstance,
+  nextTick,
+  defineComponent,
+  defineEmits,
+  ref
+} from 'vue'
 import { Autoplay } from 'swiper'
 import { datas } from './data'
 
@@ -224,6 +243,24 @@ export default defineComponent({
           clip-path: inset(0 0 0 60%);
         }
       }
+
+      @media (max-width: 1200px) {
+        top: 44%;
+        .type-title {
+          margin-bottom: 10px;
+        }
+        .content p {
+          font-size: 0.23rem;
+          line-height: 24px;
+        }
+        .main-title {
+          width: auto;
+          div {
+            height: auto;
+            font-size: 0.7rem;
+          }
+        }
+      }
     }
   }
   .pagination-controller {
@@ -252,6 +289,21 @@ export default defineComponent({
       .content-box {
         position: relative;
         z-index: 10;
+        @media (max-width: 1200px) {
+          width: 100%;
+          text-align: center;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          z-index: 9;
+          div {
+            font-size: 0.18rem;
+          }
+        }
       }
       .bg-white {
         position: absolute;
@@ -270,6 +322,16 @@ export default defineComponent({
         z-index: 5;
         top: 0;
         transition: all 0.3s ease-in-out;
+      }
+      @media (max-width: 1200px) {
+        width: 1.8rem;
+        height: 2rem;
+        .bg-black {
+          height: 100% !important;
+        }
+        &.active .bg-white {
+          height: 100% !important;
+        }
       }
     }
     .active {

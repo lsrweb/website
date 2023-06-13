@@ -62,7 +62,13 @@ export default {
         ctx.beginPath() // 开始线条绘制
         ctx.lineWidth = 1 // 设置线条宽度
         ctx.strokeStyle = '#fff' // 设置线条颜色
-        ctx.arc(25, 25, 20, 1.5 * Math.PI, (1.5 + ((current <= 0 ? 1 : current + 1) / total) * 2) * Math.PI) // 绘制圆形
+        ctx.arc(
+          25,
+          25,
+          20,
+          1.5 * Math.PI,
+          (1.5 + ((current <= 0 ? 1 : current + 1) / total) * 2) * Math.PI
+        ) // 绘制圆形
 
         ctx.stroke() // 开始绘制
       }
@@ -86,7 +92,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 canvas {
   width: 50px;
   height: 50px;
@@ -94,5 +100,8 @@ canvas {
   bottom: 20px;
   left: 20px;
   z-index: 20;
+  @media (max-width: 1200px) {
+    display: none;
+  }
 }
 </style>
